@@ -1,0 +1,14 @@
+cmake_minimum_required(VERSION 3.16.0)
+project(TELNET_SNIFFER)
+
+file(GLOB_RECURSE INCLUDE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/inc/*.h)
+file(GLOB_RECURSE SOURCES_PATH ${CMAKE_CURRENT_SOURCE_DIR}/src/*.cpp)
+add_executable(${PROJECT_NAME} ${INCLUDE_PATH} ${SOURCES_PATH})
+
+add_definitions(-DTINS_STATIC)
+target_link_libraries(${PROJECT_NAME} $ENV{TELNET_SNIFFER_DEPENDECIES}/libtins/lib/Debug/tins.lib)
+target_link_libraries(${PROJECT_NAME} $ENV{TELNET_SNIFFER_DEPENDECIES}/WpdPack/Lib/wpcap.lib)
+target_link_libraries(${PROJECT_NAME} Ws2_32 Iphlpapi)
+
+target_include_directories(${PROJECT_NAME} PRIVATE $ENV{TELNET_SNIFFER_DEPENDECIES}/libtins/include)
+target_include_directories(${PROJECT_NAME} PRIVATE $ENV{TELNET_SNIFFER_DEPENDECIES}/WpdPack/Include)
