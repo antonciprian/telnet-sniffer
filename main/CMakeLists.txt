@@ -16,3 +16,5 @@ elseif (CMAKE_SYSTEM_NAME STREQUAL Darwin OR CMAKE_SYSTEM_NAME STREQUAL Linux)
 	target_link_libraries(${PROJECT_NAME} -ltins)
 	target_include_directories(${PROJECT_NAME} PRIVATE $ENV{TELNET_SNIFFER_DEPENDECIES}/libtins/include)
 endif()
+
+target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/inc)
